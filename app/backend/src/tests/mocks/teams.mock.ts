@@ -65,4 +65,9 @@ const teamsMock = [
   }
 ]
 
-export { teamsMock };
+const teamMock = [{
+  "id": 8,
+  "teamName": "Grêmio",
+}]
+
+export { teamsMock, teamMock };
