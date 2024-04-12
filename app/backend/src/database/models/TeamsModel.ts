@@ -1,9 +1,4 @@
-import {
-  DataTypes,
-  Model,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
+import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize';
 import db from '.';
 
 class SequelizeTeams extends Model<InferAttributes<SequelizeTeams>,
@@ -19,10 +14,12 @@ SequelizeTeams.init({
     primaryKey: true,
     autoIncrement: true,
   },
+
   teamName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
 }, {
   sequelize: db,
   modelName: 'teams',
