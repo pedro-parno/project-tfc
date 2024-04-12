@@ -13,6 +13,10 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Teams integration tests:', function() {
+  beforeEach(function () {
+    sinon.restore();
+  });
+
   it('should return all teams.', async function() {
     sinon.stub(SequelizeTeams, 'findAll').resolves(teamsMock as any);
 
@@ -22,13 +26,13 @@ describe('Teams integration tests:', function() {
     expect(body).to.deep.equal(teamsMock);
   })
 
-  it('should return erro message when missing id on db', async function() {
+  it('should return erro message when missing id on data base.', async function() {
     sinon.stub(SequelizeTeams, 'findByPk').resolves(null);
 
     const { status, body } = await chai.request(app).get('/teams/123456789');
 
     expect(status).to.equal(404);
-    expect(body).to.deep.equal('Time não encontrado');
+    expect(body).to.deep.equal({ message: 'Time não encontrado' });
   })
 
   it('should return team by its id.', async function() {
