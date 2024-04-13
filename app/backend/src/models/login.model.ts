@@ -8,9 +8,12 @@ export default class LoginModel implements IUsersModel {
   async login(email: IUsers['email']): Promise<IUsers | null> {
     const login = await this.model.findOne({ where: { email } });
 
-    if (login === null) {
-      return null;
-    }
     return login;
+  }
+
+  async getRole(email: IUsers['email']): Promise<IUsers | null> {
+    const getRole = await this.model.findOne({ where: { email } });
+
+    return getRole;
   }
 }
