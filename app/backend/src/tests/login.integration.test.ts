@@ -7,6 +7,8 @@ import { app } from '../app';
 
 import SequelizeUsers from '../database/models/UsersModel';
 import LoginService from '../services/login.service';
+import tokenValidation from '../middlewares/token.middleware';
+import jwtUtils from '../utils/jwt';
 
 chai.use(chaiHttp);
 
@@ -50,5 +52,24 @@ describe('Login integration tests:', function () {
     expect(res.status).to.equal(200);
     expect(res.body.token).to.be.a('string');
   });
-});
 
+  it('should call next if token is valid', async function () {
+    const req = { headers: { authorization: 'valid_token' } };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+    const next = sinon.stub();
+
+    sinon.stub(jwtUtils, 'verify').returns({
+      email: '',
+      password: ''
+    });
+
+    tokenValidation(req as any, res as any, next);
+
+    expect(next.calledOnce).to.be.true;
+
+    sinon.restore();
+  });
+});
