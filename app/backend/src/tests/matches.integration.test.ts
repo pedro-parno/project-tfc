@@ -29,16 +29,16 @@ describe('Matches integration tests:', function () {
   it('should return erro message when missing id on data base.', async function() {
     sinon.stub(SequelizeMatches, 'findByPk').resolves(null);
 
-    const { status, body } = await chai.request(app).get('/teams/123456789');
+    const { status, body } = await chai.request(app).get('/matches/123456789');
 
     expect(status).to.equal(404);
     expect(body).to.deep.equal({ message: 'Partida não encontrado' });
   })
 
-  it('should return team by its id.', async function() {
+  it('should return match by its id.', async function() {
     sinon.stub(SequelizeMatches, 'findByPk').resolves(matchMock as any);
 
-    const { status, body } = await chai.request(app).get('/teams/8');
+    const { status, body } = await chai.request(app).get('/teams/31');
 
     expect(status).to.equal(200);
     expect(body).to.deep.equal(matchMock);

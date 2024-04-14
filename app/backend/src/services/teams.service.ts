@@ -16,6 +16,7 @@ export default class TeamsService {
 
   public async findByPk(id: number): Promise<ServiceResponse<ITeams>> {
     const dbData = await this.teamsModel.findByPk(id);
+
     if (!dbData) return { status: 'NOT_FOUND', data: { message: 'Time não encontrado' } };
 
     return { status: 'OK', data: dbData };
