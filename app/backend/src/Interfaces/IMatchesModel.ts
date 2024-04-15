@@ -1,6 +1,6 @@
 import { IMatches } from './IMatches';
 
 export interface IMatchesModel {
-  findAll(): Promise<IMatches[]>,
+  findAll(inProgress: IMatches['inProgress']): Promise<IMatches[]>,
   findByPk(id: IMatches['id']): Promise<IMatches | null>,
 }

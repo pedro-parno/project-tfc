@@ -1,11 +1,17 @@
-const matchesMock = [
+const matchesMock = [[
   {
     "id": 1,
     "homeTeamId": 16,
     "homeTeamGoals": 1,
     "awayTeamId": 8,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "São Paulo"
+    },
+    "awayTeam": {
+      "teamName": "Grêmio"
+    }
   },
   {
     "id": 2,
@@ -13,7 +19,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 14,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Internacional"
+    },
+    "awayTeam": {
+      "teamName": "Santos"
+    }
   },
   {
     "id": 3,
@@ -21,7 +33,13 @@ const matchesMock = [
     "homeTeamGoals": 3,
     "awayTeamId": 11,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Corinthians"
+    },
+    "awayTeam": {
+      "teamName": "Napoli-SC"
+    }
   },
   {
     "id": 4,
@@ -29,7 +47,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 2,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Botafogo"
+    },
+    "awayTeam": {
+      "teamName": "Bahia"
+    }
   },
   {
     "id": 5,
@@ -37,7 +61,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 10,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Flamengo"
+    },
+    "awayTeam": {
+      "teamName": "Minas Brasília"
+    }
   },
   {
     "id": 6,
@@ -45,7 +75,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 13,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Cruzeiro"
+    },
+    "awayTeam": {
+      "teamName": "Real Brasília"
+    }
   },
   {
     "id": 7,
@@ -53,7 +89,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 6,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Palmeiras"
+    },
+    "awayTeam": {
+      "teamName": "Ferroviária"
+    }
   },
   {
     "id": 8,
@@ -61,7 +103,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 1,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "São José-SP"
+    },
+    "awayTeam": {
+      "teamName": "Avaí/Kindermann"
+    }
   },
   {
     "id": 9,
@@ -69,7 +117,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 12,
     "awayTeamGoals": 3,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Avaí/Kindermann"
+    },
+    "awayTeam": {
+      "teamName": "Palmeiras"
+    }
   },
   {
     "id": 10,
@@ -77,7 +131,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 9,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Bahia"
+    },
+    "awayTeam": {
+      "teamName": "Internacional"
+    }
   },
   {
     "id": 11,
@@ -85,7 +145,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 3,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Real Brasília"
+    },
+    "awayTeam": {
+      "teamName": "Botafogo"
+    }
   },
   {
     "id": 12,
@@ -93,7 +159,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 4,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Ferroviária"
+    },
+    "awayTeam": {
+      "teamName": "Corinthians"
+    }
   },
   {
     "id": 13,
@@ -101,7 +173,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 5,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Grêmio"
+    },
+    "awayTeam": {
+      "teamName": "Cruzeiro"
+    }
   },
   {
     "id": 14,
@@ -109,7 +187,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 16,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Santos"
+    },
+    "awayTeam": {
+      "teamName": "São Paulo"
+    }
   },
   {
     "id": 15,
@@ -117,7 +201,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 15,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Minas Brasília"
+    },
+    "awayTeam": {
+      "teamName": "São José-SP"
+    }
   },
   {
     "id": 16,
@@ -125,7 +215,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 7,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Napoli-SC"
+    },
+    "awayTeam": {
+      "teamName": "Flamengo"
+    }
   },
   {
     "id": 17,
@@ -133,7 +229,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 8,
     "awayTeamGoals": 3,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Avaí/Kindermann"
+    },
+    "awayTeam": {
+      "teamName": "Grêmio"
+    }
   },
   {
     "id": 18,
@@ -141,7 +243,13 @@ const matchesMock = [
     "homeTeamGoals": 4,
     "awayTeamId": 5,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Palmeiras"
+    },
+    "awayTeam": {
+      "teamName": "Cruzeiro"
+    }
   },
   {
     "id": 19,
@@ -149,7 +257,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 2,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Napoli-SC"
+    },
+    "awayTeam": {
+      "teamName": "Bahia"
+    }
   },
   {
     "id": 20,
@@ -157,7 +271,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 9,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Flamengo"
+    },
+    "awayTeam": {
+      "teamName": "Internacional"
+    }
   },
   {
     "id": 21,
@@ -165,7 +285,13 @@ const matchesMock = [
     "homeTeamGoals": 3,
     "awayTeamId": 13,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Ferroviária"
+    },
+    "awayTeam": {
+      "teamName": "Real Brasília"
+    }
   },
   {
     "id": 22,
@@ -173,7 +299,13 @@ const matchesMock = [
     "homeTeamGoals": 3,
     "awayTeamId": 3,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Corinthians"
+    },
+    "awayTeam": {
+      "teamName": "Botafogo"
+    }
   },
   {
     "id": 23,
@@ -181,7 +313,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 16,
     "awayTeamGoals": 3,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "São José-SP"
+    },
+    "awayTeam": {
+      "teamName": "São Paulo"
+    }
   },
   {
     "id": 24,
@@ -189,7 +327,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 14,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Minas Brasília"
+    },
+    "awayTeam": {
+      "teamName": "Santos"
+    }
   },
   {
     "id": 25,
@@ -197,7 +341,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 6,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Bahia"
+    },
+    "awayTeam": {
+      "teamName": "Ferroviária"
+    }
   },
   {
     "id": 26,
@@ -205,7 +355,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 1,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Real Brasília"
+    },
+    "awayTeam": {
+      "teamName": "Avaí/Kindermann"
+    }
   },
   {
     "id": 27,
@@ -213,7 +369,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 15,
     "awayTeamGoals": 2,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Cruzeiro"
+    },
+    "awayTeam": {
+      "teamName": "São José-SP"
+    }
   },
   {
     "id": 28,
@@ -221,7 +383,13 @@ const matchesMock = [
     "homeTeamGoals": 3,
     "awayTeamId": 7,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "São Paulo"
+    },
+    "awayTeam": {
+      "teamName": "Flamengo"
+    }
   },
   {
     "id": 29,
@@ -229,7 +397,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 4,
     "awayTeamGoals": 4,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Internacional"
+    },
+    "awayTeam": {
+      "teamName": "Corinthians"
+    }
   },
   {
     "id": 30,
@@ -237,7 +411,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 12,
     "awayTeamGoals": 4,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Botafogo"
+    },
+    "awayTeam": {
+      "teamName": "Palmeiras"
+    }
   },
   {
     "id": 31,
@@ -245,7 +425,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 10,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Grêmio"
+    },
+    "awayTeam": {
+      "teamName": "Minas Brasília"
+    }
   },
   {
     "id": 32,
@@ -253,7 +439,13 @@ const matchesMock = [
     "homeTeamGoals": 5,
     "awayTeamId": 11,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Santos"
+    },
+    "awayTeam": {
+      "teamName": "Napoli-SC"
+    }
   },
   {
     "id": 33,
@@ -261,7 +453,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 16,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Avaí/Kindermann"
+    },
+    "awayTeam": {
+      "teamName": "São Paulo"
+    }
   },
   {
     "id": 34,
@@ -269,7 +467,13 @@ const matchesMock = [
     "homeTeamGoals": 3,
     "awayTeamId": 6,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Internacional"
+    },
+    "awayTeam": {
+      "teamName": "Ferroviária"
+    }
   },
   {
     "id": 35,
@@ -277,7 +481,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 5,
     "awayTeamGoals": 3,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Minas Brasília"
+    },
+    "awayTeam": {
+      "teamName": "Cruzeiro"
+    }
   },
   {
     "id": 36,
@@ -285,7 +495,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 7,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Bahia"
+    },
+    "awayTeam": {
+      "teamName": "Flamengo"
+    }
   },
   {
     "id": 37,
@@ -293,7 +509,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 13,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "São José-SP"
+    },
+    "awayTeam": {
+      "teamName": "Real Brasília"
+    }
   },
   {
     "id": 38,
@@ -301,7 +523,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 4,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Santos"
+    },
+    "awayTeam": {
+      "teamName": "Corinthians"
+    }
   },
   {
     "id": 39,
@@ -309,7 +537,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 11,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Botafogo"
+    },
+    "awayTeam": {
+      "teamName": "Napoli-SC"
+    }
   },
   {
     "id": 40,
@@ -317,7 +551,13 @@ const matchesMock = [
     "homeTeamGoals": 4,
     "awayTeamId": 8,
     "awayTeamGoals": 1,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Palmeiras"
+    },
+    "awayTeam": {
+      "teamName": "Grêmio"
+    }
   },
   {
     "id": 41,
@@ -325,7 +565,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 9,
     "awayTeamGoals": 0,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "São Paulo"
+    },
+    "awayTeam": {
+      "teamName": "Internacional"
+    }
   },
   {
     "id": 42,
@@ -333,7 +579,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 1,
     "awayTeamGoals": 0,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Ferroviária"
+    },
+    "awayTeam": {
+      "teamName": "Avaí/Kindermann"
+    }
   },
   {
     "id": 43,
@@ -341,7 +593,13 @@ const matchesMock = [
     "homeTeamGoals": 0,
     "awayTeamId": 10,
     "awayTeamGoals": 0,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Napoli-SC"
+    },
+    "awayTeam": {
+      "teamName": "Minas Brasília"
+    }
   },
   {
     "id": 44,
@@ -349,7 +607,13 @@ const matchesMock = [
     "homeTeamGoals": 2,
     "awayTeamId": 15,
     "awayTeamGoals": 2,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Flamengo"
+    },
+    "awayTeam": {
+      "teamName": "São José-SP"
+    }
   },
   {
     "id": 45,
@@ -357,7 +621,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 3,
     "awayTeamGoals": 1,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Cruzeiro"
+    },
+    "awayTeam": {
+      "teamName": "Botafogo"
+    }
   },
   {
     "id": 46,
@@ -365,7 +635,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 12,
     "awayTeamGoals": 1,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Corinthians"
+    },
+    "awayTeam": {
+      "teamName": "Palmeiras"
+    }
   },
   {
     "id": 47,
@@ -373,7 +649,13 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 14,
     "awayTeamGoals": 2,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Grêmio"
+    },
+    "awayTeam": {
+      "teamName": "Santos"
+    }
   },
   {
     "id": 48,
@@ -381,9 +663,15 @@ const matchesMock = [
     "homeTeamGoals": 1,
     "awayTeamId": 2,
     "awayTeamGoals": 1,
-    "inProgress": true
+    "inProgress": true,
+    "homeTeam": {
+      "teamName": "Real Brasília"
+    },
+    "awayTeam": {
+      "teamName": "Bahia"
+    }
   }
-];
+]]
 
 const matchMock = [{
   "id": 31,
@@ -391,7 +679,13 @@ const matchMock = [{
     "homeTeamGoals": 2,
     "awayTeamId": 10,
     "awayTeamGoals": 0,
-    "inProgress": false
+    "inProgress": false,
+    "homeTeam": {
+      "teamName": "Grêmio"
+    },
+    "awayTeam": {
+      "teamName": "Minas Brasília"
+    }
 }];
 
 export { matchesMock, matchMock };

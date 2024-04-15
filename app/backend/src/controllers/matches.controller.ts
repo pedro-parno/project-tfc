@@ -8,7 +8,8 @@ export default class MatchesController {
   ) { }
 
   public async findAll(req: Request, res: Response) {
-    const serviceResponse = await this.matchesService.findAll();
+    const { inProgress } = req.query;
+    const serviceResponse = await this.matchesService.findAll(inProgress === 'true');
 
     res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
