@@ -6,9 +6,11 @@ import { IMatchesModel } from '../Interfaces/IMatchesModel';
 export default class MatchesModel implements IMatchesModel {
   private model = SequelizeMatches;
 
-  async findAll(inProgress: IMatches['inProgress']): Promise<IMatches[]> {
+  async findAll(inProgress?: IMatches['inProgress']): Promise<IMatches[]> {
+    const where = inProgress !== undefined ? { where: { inProgress } } : {};
+
     const dbData = await this.model.findAll({
-      where: { inProgress },
+      ...where,
       include: [
         { model: SequelizeTeams, as: 'homeTeam', attributes: ['teamName'] },
         { model: SequelizeTeams, as: 'awayTeam', attributes: ['teamName'] },
