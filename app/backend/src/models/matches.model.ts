@@ -30,4 +30,11 @@ export default class MatchesModel implements IMatchesModel {
 
     return dbData;
   }
+
+  async update(id: number): Promise<null | { message: 'Finished' }> {
+    const [affectedCount] = await this.model.update({ inProgress: false }, { where: { id } });
+
+    if (affectedCount === 0) return null;
+    return { message: 'Finished' };
+  }
 }

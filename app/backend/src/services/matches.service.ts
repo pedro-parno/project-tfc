@@ -21,4 +21,12 @@ export default class MatchesService {
 
     return { status: 'OK', data: dbData };
   }
+
+  public async update(id: number): Promise<ServiceResponse<{ message: string }>> {
+    const dbData = await this.matchesModel.update(id);
+
+    if (!dbData) return { status: 'NOT_FOUND', data: { message: 'Partida não encontrada' } };
+
+    return { status: 'OK', data: dbData };
+  }
 }
