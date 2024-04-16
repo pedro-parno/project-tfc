@@ -10,6 +10,8 @@ router.get('/', (req: Request, res: Response) => matchesController.findAll(req, 
 router.get('/:id', tokenValidation, (req: Request, res: Response) =>
   matchesController.findByPk(req, res));
 router.patch('/:id/finish', tokenValidation, (req: Request, res: Response) =>
-  matchesController.update(req, res));
+  matchesController.updateMatch(req, res));
+router.patch('/:id', tokenValidation, (req: Request, res: Response) =>
+  matchesController.updateGoals(req, res));
 
 export default router;

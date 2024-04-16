@@ -31,10 +31,24 @@ export default class MatchesModel implements IMatchesModel {
     return dbData;
   }
 
-  async update(id: number): Promise<null | { message: 'Finished' }> {
+  async updateMatch(id: number): Promise<null | { message: 'Finished' }> {
     const [affectedCount] = await this.model.update({ inProgress: false }, { where: { id } });
 
     if (affectedCount === 0) return null;
     return { message: 'Finished' };
+  }
+
+  async updateGoals(id: number, goalsData:{ homeTeamGoals: number;
+    awayTeamGoals: number; }): Promise<IMatches | null> {
+    const { homeTeamGoals, awayTeamGoals } = goalsData;
+    const [affectedRow] = await this.model.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+
+    if (affectedRow === 0) return null;
+
+    const updateGoals = await this.findByPk(id);
+    return updateGoals;
   }
 }

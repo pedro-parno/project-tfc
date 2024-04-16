@@ -25,9 +25,17 @@ export default class MatchesController {
     return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
 
-  public async update(req: Request, res: Response) {
+  public async updateMatch(req: Request, res: Response) {
     const { id } = req.params;
-    const serviceResponse = await this.matchesService.update(Number(id));
+    const serviceResponse = await this.matchesService.updateMatch(Number(id));
+
+    return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+  }
+
+  public async updateGoals(req: Request, res: Response) {
+    const { id } = req.params;
+    const goalsData = req.body;
+    const serviceResponse = await this.matchesService.updateGoals(Number(id), goalsData);
 
     return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }

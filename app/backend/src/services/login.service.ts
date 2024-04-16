@@ -4,7 +4,7 @@ import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { IUsersModel } from '../Interfaces/IUsersModel';
 import LoginModel from '../models/login.model';
 import { ILogin } from '../Interfaces/ILogin';
-import { IUsers } from '../Interfaces/IUsers';
+import { IRole } from '../Interfaces/IRole';
 
 export default class LoginService {
   constructor(
@@ -25,17 +25,11 @@ export default class LoginService {
     return { status: 'OK', data: { token } };
   }
 
-  public async getRole(email: string, role: string): Promise<ServiceResponse<IUsers>> {
-    const user = await this.loginModel.getRole(email, role);
+  public async getUserRole(email: string, password: string): Promise<ServiceResponse<IRole>> {
+    const user = await this.loginModel.login(email, password);
 
-    console.log(user);
-    console.log(user?.role);
+    if (!user) return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
 
-    if (!user) {
-      return {
-        status: 'UNAUTHORIZED', data: { message: 'Token not found' },
-      };
-    }
-    return { status: 'OK', data: user };
+    return { status: 'OK', data: { role: user.role } };
   }
 }

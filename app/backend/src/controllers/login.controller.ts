@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import * as jwt from 'jsonwebtoken';
 import LoginService from '../services/login.service';
 import mapStatusHTTP from '../utils/mapStatus';
 
@@ -17,24 +16,14 @@ export default class LoginController {
   }
 
   public async getRole(req: Request, res: Response) {
-    const token: string | undefined = req.headers.authorization;
-    if (!token || typeof token !== 'string') {
-      return res.status(401).json({ message: 'Unauthorized' });
+    const { email, password } = req.body.user;
+
+    const userLogin = await this.loginService.getUserRole(email, password);
+
+    if (!userLogin || userLogin.status !== 'OK' || !('role' in userLogin.data)) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    const decodedToken = jwt.decode(token) as jwt.JwtPayload;
-    if (!decodedToken || !decodedToken.email) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    }
-
-    const { email } = decodedToken;
-    const role = decodedToken?.role || '';
-    const serviceResponse = await this.loginService.getRole(email, role);
-
-    if (serviceResponse.status === 'OK' && 'role' in serviceResponse.data) {
-      const roleResponse = { role: serviceResponse.data.role };
-      return res.status(200).json(roleResponse);
-    }
-    return res.status(401).json(serviceResponse.data);
+    return res.status(mapStatusHTTP(userLogin.status)).json({ role: userLogin.data.role });
   }
 }

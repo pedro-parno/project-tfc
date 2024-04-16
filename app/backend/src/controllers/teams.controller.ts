@@ -10,7 +10,7 @@ export default class TeamsController {
   public async findAll(req: Request, res: Response) {
     const serviceResponse = await this.teamsService.findAll();
 
-    res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+    return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
 
   public async findByPk(req: Request, res: Response) {

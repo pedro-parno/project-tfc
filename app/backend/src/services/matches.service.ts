@@ -22,10 +22,23 @@ export default class MatchesService {
     return { status: 'OK', data: dbData };
   }
 
-  public async update(id: number): Promise<ServiceResponse<{ message: string }>> {
-    const dbData = await this.matchesModel.update(id);
+  public async updateMatch(id: number): Promise<ServiceResponse<{ message: string }>> {
+    const dbData = await this.matchesModel.updateMatch(id);
 
-    if (!dbData) return { status: 'NOT_FOUND', data: { message: 'Partida não encontrada' } };
+    if (!dbData) {
+      return { status: 'NOT_FOUND', data: { message: 'Partida não encontrada ou finalizada' } };
+    }
+
+    return { status: 'OK', data: dbData };
+  }
+
+  public async updateGoals(id: number, goalsData: { homeTeamGoals: number;
+    awayTeamGoals: number }): Promise<ServiceResponse<IMatches>> {
+    const dbData = await this.matchesModel.updateGoals(id, goalsData);
+
+    if (!dbData) {
+      return { status: 'NOT_FOUND', data: { message: 'Partida não encontrada ou finalizada' } };
+    }
 
     return { status: 'OK', data: dbData };
   }
