@@ -57,10 +57,13 @@ export default class MatchesService {
     const awayTeamExists = await this.teamsModel.findByPk(createMatch.awayTeamId);
 
     if (!homeTeamExists || !awayTeamExists) {
-      return {
-        status: 'UNPROCESSABLE ENTITY', data: { message: 'There is no team with such id!' },
+      return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' },
       };
     }
+    // if (homeTeamExists awayTeamExists) {
+    //   return { status: 'UNPROCESSABLE_ENTITY',
+    //     data: { message: 'It is not possible to create a match with two equal teams' } };
+    // }
 
     const newMatch = await this.matchesModel.create(createMatch);
 
