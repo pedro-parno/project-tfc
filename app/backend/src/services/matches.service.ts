@@ -1,11 +1,12 @@
+import TeamsModel from '../models/teams.model';
 import { IMatches } from '../Interfaces/IMatches';
-import { IMatchesModel } from '../Interfaces/IMatchesModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import MatchesModel from '../models/matches.model';
 
 export default class MatchesService {
   constructor(
-    private matchesModel: IMatchesModel = new MatchesModel(),
+    private matchesModel: MatchesModel = new MatchesModel(),
+    private teamsModel: TeamsModel = new TeamsModel(),
   ) { }
 
   public async findAll(inProgress?: boolean): Promise<ServiceResponse<IMatches[]>> {
@@ -32,8 +33,10 @@ export default class MatchesService {
     return { status: 'OK', data: dbData };
   }
 
-  public async updateGoals(id: number, goalsData: { homeTeamGoals: number;
-    awayTeamGoals: number }): Promise<ServiceResponse<IMatches>> {
+  public async updateGoals(id: number, goalsData: {
+    homeTeamGoals: number;
+    awayTeamGoals: number
+  }): Promise<ServiceResponse<IMatches>> {
     const dbData = await this.matchesModel.updateGoals(id, goalsData);
 
     if (!dbData) {
@@ -41,5 +44,25 @@ export default class MatchesService {
     }
 
     return { status: 'OK', data: dbData };
+  }
+
+  async create(createMatch: {
+    homeTeamId: number;
+    awayTeamId: number;
+    homeTeamGoals: number;
+    awayTeamGoals: number;
+  }): Promise<ServiceResponse<IMatches>> {
+    const homeTeamExists = await this.teamsModel.findByPk(createMatch.homeTeamId);
+    const awayTeamExists = await this.teamsModel.findByPk(createMatch.awayTeamId);
+
+    if (!homeTeamExists || !awayTeamExists) {
+      return {
+        status: 'UNPROCESSABLE ENTITY', data: { message: 'There is no team with such id!' },
+      };
+    }
+
+    const newMatch = await this.matchesModel.create(createMatch);
+
+    return { status: 'OK', data: newMatch };
   }
 }

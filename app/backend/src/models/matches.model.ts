@@ -3,6 +3,9 @@ import SequelizeMatches from '../database/models/MatchesModel';
 import { IMatches } from '../Interfaces/IMatches';
 import { IMatchesModel } from '../Interfaces/IMatchesModel';
 
+type partialMatch = Partial<IMatches>;
+// type matchInput = Omit<IMatches, 'id'>;
+
 export default class MatchesModel implements IMatchesModel {
   private model = SequelizeMatches;
 
@@ -38,8 +41,10 @@ export default class MatchesModel implements IMatchesModel {
     return { message: 'Finished' };
   }
 
-  async updateGoals(id: number, goalsData:{ homeTeamGoals: number;
-    awayTeamGoals: number; }): Promise<IMatches | null> {
+  async updateGoals(id: number, goalsData: {
+    homeTeamGoals: number;
+    awayTeamGoals: number;
+  }): Promise<IMatches | null> {
     const { homeTeamGoals, awayTeamGoals } = goalsData;
     const [affectedRow] = await this.model.update(
       { homeTeamGoals, awayTeamGoals },
@@ -50,5 +55,12 @@ export default class MatchesModel implements IMatchesModel {
 
     const updateGoals = await this.findByPk(id);
     return updateGoals;
+  }
+
+  async create(createMatch: partialMatch): Promise<IMatches> {
+  // async create(createMach: matchInput): Promise<IMatches> {
+    const newData = await this.model.create({ ...createMatch, inProgress: true });
+
+    return newData;
   }
 }
