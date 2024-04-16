@@ -60,10 +60,10 @@ export default class MatchesService {
       return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' },
       };
     }
-    // if (homeTeamExists awayTeamExists) {
-    //   return { status: 'UNPROCESSABLE_ENTITY',
-    //     data: { message: 'It is not possible to create a match with two equal teams' } };
-    // }
+    if (createMatch.homeTeamId === createMatch.awayTeamId) {
+      return { status: 'UNPROCESSABLE_ENTITY',
+        data: { message: 'It is not possible to create a match with two equal teams' } };
+    }
 
     const newMatch = await this.matchesModel.create(createMatch);
 
