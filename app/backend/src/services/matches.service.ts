@@ -51,6 +51,7 @@ export default class MatchesService {
     awayTeamId: number;
     homeTeamGoals: number;
     awayTeamGoals: number;
+    inProgress: boolean;
   }): Promise<ServiceResponse<IMatches>> {
     const homeTeamExists = await this.teamsModel.findByPk(createMatch.homeTeamId);
     const awayTeamExists = await this.teamsModel.findByPk(createMatch.awayTeamId);
@@ -63,6 +64,6 @@ export default class MatchesService {
 
     const newMatch = await this.matchesModel.create(createMatch);
 
-    return { status: 'OK', data: newMatch };
+    return { status: 'CREATED', data: newMatch };
   }
 }

@@ -1,6 +1,6 @@
 import { IMatches } from './IMatches';
 
-type partialMatch = Partial<IMatches>;
+type matchInput = Omit<IMatches, 'id'>;
 
 export interface IMatchesModel {
   findAll(inProgress?: IMatches['inProgress']): Promise<IMatches[]>,
@@ -8,5 +8,5 @@ export interface IMatchesModel {
   updateMatch(id: IMatches['id']): Promise<null | { message: string }>,
   updateGoals(id: IMatches['id'], goalsData: { homeTeamGoals: IMatches['homeTeamGoals'],
     awayTeamGoals: IMatches['awayTeamGoals'] }): Promise<IMatches | null >,
-  create(createMatch: partialMatch): Promise<IMatches>,
+  create(createMach: matchInput): Promise<IMatches>,
 }

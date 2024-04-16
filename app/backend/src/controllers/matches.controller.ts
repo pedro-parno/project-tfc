@@ -35,13 +35,15 @@ export default class MatchesController {
   public async updateGoals(req: Request, res: Response) {
     const { id } = req.params;
     const goalsData = req.body;
+
     const serviceResponse = await this.matchesService.updateGoals(Number(id), goalsData);
 
     return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
 
   public async create(req: Request, res: Response) {
-    const { createMatch } = req.body;
+    const createMatch = req.body;
+
     const serviceResponse = await this.matchesService.create(createMatch);
 
     return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);

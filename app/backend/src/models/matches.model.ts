@@ -3,8 +3,7 @@ import SequelizeMatches from '../database/models/MatchesModel';
 import { IMatches } from '../Interfaces/IMatches';
 import { IMatchesModel } from '../Interfaces/IMatchesModel';
 
-type partialMatch = Partial<IMatches>;
-// type matchInput = Omit<IMatches, 'id'>;
+type matchInput = Omit<IMatches, 'id'>;
 
 export default class MatchesModel implements IMatchesModel {
   private model = SequelizeMatches;
@@ -57,8 +56,7 @@ export default class MatchesModel implements IMatchesModel {
     return updateGoals;
   }
 
-  async create(createMatch: partialMatch): Promise<IMatches> {
-  // async create(createMach: matchInput): Promise<IMatches> {
+  async create(createMatch: matchInput): Promise<IMatches> {
     const newData = await this.model.create({ ...createMatch, inProgress: true });
 
     return newData;
