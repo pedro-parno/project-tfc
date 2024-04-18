@@ -31,7 +31,7 @@ describe('Matches integration tests:', function () {
 
     const { status, body } = await chai.request(app).get('/matches/123456789');
 
-    expect(status).to.equal(404);
+    expect(status).to.equal(401);
     expect(body).to.deep.equal({ message: 'Partida não encontrada' });
   })
 

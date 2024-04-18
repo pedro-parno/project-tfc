@@ -40,7 +40,7 @@ function getTeamMatches(team: ITeams, matches: IMatches[]): IMatches[] {
 }
 
 function calculateTotalPoints(teamMatches: IMatches[]): number {
-  return teamMatches.reduce((acc, match) => acc + TeamStatus.calculateTotalPoints(match), 0);
+  return teamMatches.reduce((acc, match) => acc + TeamStatus.calculateTotalPointsHome(match), 0);
 }
 
 function calculateTotalGames(teamMatches: IMatches[]): number {
@@ -105,9 +105,18 @@ function calculateEfficiencyAndGoalsBalance(
   return { goalsBalance, efficiency };
 }
 
-function scoreboard(_team: ITeams, _matches: IMatches[]) {
+function scoreboard(team: ITeams, matches: IMatches[]) {
+  const allResults = results(team, matches);
+  const goalsAndEfficiency = calculateEfficiencyAndGoalsBalance(
+    allResults.goalsFavor,
+    allResults.goalsOwn,
+    allResults.totalPoints,
+    allResults.totalGames,
+  );
+
   return {
-    ...results, ...calculateEfficiencyAndGoalsBalance,
+    ...allResults,
+    ...goalsAndEfficiency,
   };
 }
 
@@ -120,12 +129,8 @@ export default class LeaderboardService {
   public async getLeaderboard(): Promise<ServiceResponse<ILeaderboard[]>> {
     const matches = await this.matchesModel.findAll(false);
     const allTeams = await this.teamsModel.findAll();
-    const leaderboard: ILeaderboard[] = [];
-
-    allTeams.forEach(async (team) => {
-      const finalResults: ILeaderboard = await scoreboard(team, matches);
-      leaderboard.push(finalResults);
-    });
+    const leaderboard: ILeaderboard[] = await Promise.all(allTeams.map(async (team) =>
+      scoreboard(team, matches)));
 
     const arrangedLeaderboard = TeamStatus.arrangeTeams(leaderboard);
 

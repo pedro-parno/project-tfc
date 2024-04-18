@@ -2,7 +2,7 @@ import { IMatches } from '../Interfaces/IMatches';
 import { ILeaderboard } from '../Interfaces/ILeaderboard';
 
 export default class TeamStatus {
-  static calculateTotalPoints(match: IMatches): number {
+  static calculateTotalPointsHome(match: IMatches): number {
     if (match.homeTeamGoals > match.awayTeamGoals) {
       return 3;
     } if (match.homeTeamGoals === match.awayTeamGoals) {
@@ -11,9 +11,18 @@ export default class TeamStatus {
     return 0;
   }
 
-  static calculateEfficiency(totalPoints: number, totalGames: number): number {
+  static calculateTotalPointsAway(match: IMatches): number {
+    if (match.awayTeamGoals > match.homeTeamGoals) {
+      return 3;
+    } if (match.awayTeamGoals === match.homeTeamGoals) {
+      return 1;
+    }
+    return 0;
+  }
+
+  static calculateEfficiency(totalPoints: number, totalGames: number): string {
     const efficiency = (totalPoints / (totalGames * 3)) * 100;
-    return parseFloat(efficiency.toFixed(2));
+    return efficiency.toFixed(2);
   }
 
   static calculateGoalDifference(goalsFavor: number, goalsOwn: number): number {
