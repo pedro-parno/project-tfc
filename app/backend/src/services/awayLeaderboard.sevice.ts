@@ -7,11 +7,11 @@ import { IMatches } from '../Interfaces/IMatches';
 import TeamsModel from '../models/teams.model';
 
 function getTeamMatches(team: ITeams, matches: IMatches[]): IMatches[] {
-  return matches.filter((match) => match.homeTeamId === team.id);
+  return matches.filter((match) => match.awayTeamId === team.id);
 }
 
 function calculateTotalPoints(teamMatches: IMatches[]): number {
-  return teamMatches.reduce((acc, match) => acc + TeamStatus.calculateTotalPoints(match), 0);
+  return teamMatches.reduce((acc, match) => acc + TeamStatus.calculateTotalPointsAway(match), 0);
 }
 
 function calculateTotalGames(teamMatches: IMatches[]): number {
@@ -19,11 +19,11 @@ function calculateTotalGames(teamMatches: IMatches[]): number {
 }
 
 function calculateTotalVictories(teamMatches: IMatches[]): number {
-  return teamMatches.filter((match) => match.homeTeamGoals > match.awayTeamGoals).length;
+  return teamMatches.filter((match) => match.awayTeamGoals > match.homeTeamGoals).length;
 }
 
 function calculateTotalDraws(teamMatches: IMatches[]): number {
-  return teamMatches.filter((match) => match.homeTeamGoals === match.awayTeamGoals).length;
+  return teamMatches.filter((match) => match.awayTeamGoals === match.homeTeamGoals).length;
 }
 
 function calculateTotalLosses(
@@ -35,11 +35,11 @@ function calculateTotalLosses(
 }
 
 function calculateGoalsFavor(teamMatches: IMatches[]): number {
-  return teamMatches.reduce((acc, match) => acc + match.homeTeamGoals, 0);
+  return teamMatches.reduce((acc, match) => acc + match.awayTeamGoals, 0);
 }
 
 function calculateGoalsOwn(teamMatches: IMatches[]): number {
-  return teamMatches.reduce((acc, match) => acc + match.awayTeamGoals, 0);
+  return teamMatches.reduce((acc, match) => acc + match.homeTeamGoals, 0);
 }
 
 function results(team: ITeams, matches: IMatches[]): ILeaderboard {
@@ -91,7 +91,7 @@ function scoreboard(team: ITeams, matches: IMatches[]) {
   };
 }
 
-export default class LeaderboardService {
+export default class awayLeaderboardService {
   constructor(
     private matchesModel: MatchesModel = new MatchesModel(),
     private teamsModel: TeamsModel = new TeamsModel(),

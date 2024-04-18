@@ -2,10 +2,20 @@ import { IMatches } from '../Interfaces/IMatches';
 import { ILeaderboard } from '../Interfaces/ILeaderboard';
 
 export default class TeamStatus {
-  static calculateTotalPoints(match: IMatches): number {
+  static calculateTotalPointsHome(match: IMatches): number {
     if (match.homeTeamGoals > match.awayTeamGoals) {
       return 3;
     } if (match.homeTeamGoals === match.awayTeamGoals) {
+      return 1;
+    }
+    return 0;
+  }
+
+  static calculateTotalPointsAway(match: IMatches):number {
+    if (match.awayTeamGoals > match.homeTeamGoals) {
+      return 3;
+    }
+    if (match.awayTeamGoals === match.homeTeamGoals) {
       return 1;
     }
     return 0;
