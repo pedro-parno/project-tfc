@@ -47,14 +47,17 @@ describe('Login integration tests:', function () {
   });
 
   it('should return a token and success response', async function () {
-    const res = await chai.request(app).post('/login').send({ email: 'admin@admin.com', password: 'secret_admin' });
+    const res = await chai.request(app).post('/login').send({ email: 'user@user.com', password: 'secret_user' });
 
     expect(res.status).to.equal(200);
     expect(res.body.token).to.be.a('string');
   });
 
   it('should call next if token is valid', async function () {
-    const req = { headers: { authorization: 'valid_token' } };
+    const req = {
+      headers: { authorization: 'Bearer valid_token' },
+      body: {},
+    };
     const res = {
       status: sinon.stub().returnsThis(),
       json: sinon.stub(),
