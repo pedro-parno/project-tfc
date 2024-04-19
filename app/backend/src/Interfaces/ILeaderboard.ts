@@ -7,6 +7,6 @@ export interface ILeaderboard {
   totalLosses: number;
   goalsFavor: number;
   goalsOwn: number;
-  // goalsBalance: number;
-  // efficiency: number;
+  goalsBalance?: number;
+  efficiency?: string;
 }

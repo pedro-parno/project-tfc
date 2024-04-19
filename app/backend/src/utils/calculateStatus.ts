@@ -26,6 +26,16 @@ export default class TeamStatus {
     return efficiency.toFixed(2);
   }
 
+  static calculateGeneralEfficiency(
+    calculateTotalPointsHome: number,
+    calculateTotalPointsAway: number,
+    totalGames: number,
+  ): string {
+    const efficiency = ((calculateTotalPointsHome + calculateTotalPointsAway)
+    / (totalGames * 3)) * 100;
+    return efficiency.toFixed(2);
+  }
+
   static calculateGoalDifference(goalsFavor: number, goalsOwn: number): number {
     return goalsFavor - goalsOwn;
   }
