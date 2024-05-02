@@ -1,4 +1,9 @@
 ## Trybe Futebol Club
+
+
+![Intro gif](./app/project-gif/Screencast%20from%2002-05-2024%2013_10_44.gif)
+
+
 <br />
 
 <!-- Índice -->
@@ -47,8 +52,7 @@ O TFC é uma plataforma informativa que oferece atualizações sobre partidas e 
 <!-- Como rodar o projeto -->
 ## Como rodar o projeto
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Se nenhuma configuração for modificada, após realizar os passos abaixo, o site estará rodando no `http://localhost:3000/leaderboard`. Verifique antes se há outra aplicação rodando nas portas padrões, neste projeto o backend e o frontend estão rodando nas respectivas portas, 3001 e 3000.
 
 ### pré-requisitos:
 
