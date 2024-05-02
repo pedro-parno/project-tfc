@@ -1,4 +1,9 @@
 ## Trybe Futebol Club
+
+
+![Intro gif](./app/project-gif/Screencast%20from%2002-05-2024%2013_10_44.gif)
+
+
 <br />
 
 <!-- Índice -->
